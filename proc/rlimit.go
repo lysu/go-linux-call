@@ -2,9 +2,13 @@ package main
 import (
 	"syscall"
 	"fmt"
+	"os"
 )
 
 func main() {
+
+	os.Setenv("GOTRACEBACK", "crash")
+
 	printCurrentCoreRlimit()
 
 	err := syscall.Setrlimit(syscall.RLIMIT_CORE, &syscall.Rlimit{syscall.RLIM_INFINITY, syscall.RLIM_INFINITY})
